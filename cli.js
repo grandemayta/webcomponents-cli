@@ -13,6 +13,7 @@ const mfsEditor = memFsEditor.create(memFs.create());
 
 class WebComponentsCLI {
   constructor() {
+    this.root = path.resolve(__dirname, './');
     this.src = path.resolve(__dirname, './wc-boilerplate');
     this.dest = ''
     this.log = console.log;
@@ -43,10 +44,9 @@ class WebComponentsCLI {
   }
 
   copyBoilerplate(projectData) {
-    mfsEditor.copyTpl(
-      `${this.src}/.gitignore`,
-      `${this.dest}/.gitignore`,
-      projectData
+    mfsEditor.copy(
+      `${this.root}/gitignore`,
+      `${this.dest}/.gitignore`
     );
     mfsEditor.copyTpl(
       `${this.src}`,
